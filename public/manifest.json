@@ -1,0 +1,8 @@
+{
+  "short_name": "Personal Website",
+  "name": "Nathan Yocum's Personal Website",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
