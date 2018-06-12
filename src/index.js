@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from './routes/App';
-import Users from './routes/index';
+import Users from './routes/users';
 import registerServiceWorker from './registerServiceWorker';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
@@ -18,6 +18,7 @@ const client = new ApolloClient({
 const App = (
   <ApolloProvider client={client}>
   <div>
+    
     <Users />
   </div>
   </ApolloProvider>
