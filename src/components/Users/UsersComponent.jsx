@@ -1,35 +1,29 @@
 import React from "react";
+import NavBar from '../NavBar/NavBarComponent';
 import {Query} from "react-apollo";
-import gql from "graphql-tag"
 
-const GET_USERS = gql`
-  {
-    allUsers{
-      id
-      name
-      email
-    }
-
-  }
-`
+import GET_USERS from '../../queries/GET_USERS';
 
 const Users = () => (
-  <Query query={GET_USERS}>
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error! {error.message}</p>;
+  <div>
+    <NavBar />
+    <Query query={GET_USERS}>
+      {({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>Error! {error.message}</p>;
+        
+        let names = data.allUsers.map((obj) => {
+          return <li key={obj.name}>{obj.name}</li>;
+        });
+        let emails = data.allUsers.map((obj) => {
+          return <li key={obj.name}>{obj.email}</li>
+        });
+        
       
-      let names = data.allUsers.map((obj) => {
-        return <li key={obj.name}>{obj.name}</li>;
-      });
-      let emails = data.allUsers.map((obj) => {
-        return <li key={obj.name}>{obj.email}</li>
-      });
-      
-
-      return <ul> {names} {emails}</ul>
-    }}
-  </Query>
+        return <ul> {names} {emails}</ul>
+      }}
+    </Query>
+  </div>
 );
 
 export default Users;
