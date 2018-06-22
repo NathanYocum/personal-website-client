@@ -5,6 +5,7 @@
   "dependencies": {
     "apollo-client-preset": "^1.0.8",
     "graphql": "^0.13.2",
+    "npm": "^6.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
@@ -19,6 +20,7 @@
     "apollo-cache-inmemory": "^1.2.2",
     "apollo-client": "^2.3.2",
     "graphql-tag": "^2.9.2",
-    "react-apollo": "^2.1.4"
+    "react-apollo": "^2.1.4",
+    "react-router": "^3.0.5"
   }
 }

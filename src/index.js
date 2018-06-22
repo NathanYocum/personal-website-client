@@ -1,29 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './routes/App';
-import Users from './routes/users';
+
+//Components
+import NotFound from './components/NotFound/NotFoundComponent';
+import Root from './components/RootComponent';
+import App from './components/App/App';
+import Index from './components/Index/Index';
 import registerServiceWorker from './registerServiceWorker';
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { ApolloProvider } from 'react-apollo';
-import { InMemoryCache } from 'apollo-client-preset';
 
-const client = new ApolloClient({
-  link: new HttpLink({
-    uri:'http://localhost:3030/graphql',
-  }),
-  cache: new InMemoryCache(),
-});
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
-const App = (
-  <ApolloProvider client={client}>
-  <div>
-    
-    <Users />
-  </div>
-  </ApolloProvider>
+const Routes = (
+  <Router history={browserHistory}>
+    <Route path="/" component={Root}>
+      <IndexRoute component={Index}/>
+      <Route path="index" component={Index}/>
+      <Route path="users" component={App}/>
+      <Route path="*" component={NotFound}/>
+    </Route>
+  </Router>
 );
 
-
-ReactDOM.render(App, document.getElementById('root'));
+ReactDOM.render(Routes, document.getElementById('root'));
 registerServiceWorker();
